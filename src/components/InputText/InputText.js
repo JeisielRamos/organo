@@ -6,7 +6,7 @@ export const InputText = (props) => {
             <label> 
                 {props.label} 
             </label>
-            <input placeholder={props.placeholder}/>
+            <input required={props.required} placeholder={props.placeholder}/>
         </div>
     )
 }
