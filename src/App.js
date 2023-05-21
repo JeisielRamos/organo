@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Banner from './components/Banner';
 import Form from './components/Form';
+import Team from './components/Team';
 
 function App() {
 
@@ -14,6 +15,9 @@ function App() {
     <div className="App">
       <Banner />
       <Form registeredWorker = { worker => SetNewWorker(worker)}/>
+      <Team name="Liderança"/>
+      <Team name="Geografia"/>
+      <Team name="Novo Testamento"/>
      </div>
   );
 }
