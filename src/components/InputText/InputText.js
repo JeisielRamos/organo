@@ -1,17 +1,17 @@
+import { useState } from 'react'
 import './InputText.css'
 
 export const InputText = (props) => {
 
     const whenTyping = (event) => {
-        var valor = event.target.value
-        console.log(valor);
+        props.Changed(event.target.value)
     }
     return (
         <div className="input-text">
             <label> 
                 {props.label} 
             </label>
-            <input onChange={whenTyping} required={props.required} placeholder={props.placeholder}/>
+            <input value={props.value} onChange={whenTyping} required={props.required} placeholder={props.placeholder}/>
         </div>
     )
 }
