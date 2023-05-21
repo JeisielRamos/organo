@@ -4,7 +4,7 @@ import Button from "../Button"
 import DropDownList from "../DropDownList"
 import InputText from "../InputText"
 import './Form.css'
-export const Form = () => {
+export const Form = (props) => {
     const times = ["Geografia", "liderança", "novo testamento"];
 
     const [name, setName] = useState('')
@@ -15,7 +15,8 @@ export const Form = () => {
     const whenSaving = (event) => {
         
         event.preventDefault();
-        console.log('saving... ', name, office, image);
+        props.registeredWorker([name, office, image, matter])
+        console.log('saving... ');
     }
     return (
         <section className="form">
