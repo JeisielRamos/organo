@@ -5,8 +5,6 @@ import DropDownList from "../DropDownList"
 import InputText from "../InputText"
 import './Form.css'
 export const Form = (props) => {
-    const times = ["Geografia", "liderança", "novo testamento"];
-
     const [name, setName] = useState('')
     const [office, setOffice] = useState('')
     const [image, setImage] = useState('')
@@ -37,14 +35,14 @@ export const Form = (props) => {
                     Changed={valor => setOffice(valor)}
                 />
                 <InputText 
-                    label="imagem" 
+                    label="Imagem" 
                     placeholder="Informe o endereço da imagem"
                     value={image}
                     Changed={valor => setImage(valor)}
                 />
                 <DropDownList 
                     label="Materia" 
-                    itens={times} 
+                    itens={props.teams} 
                     required={true}
                     value={matter}
                     Changed={valor => setMatter(valor)}
