@@ -1,14 +1,14 @@
 import './Worker.css'
 
-export const Worker = () => {
+export const Worker = ({name, office, image, headerColor}) => {
     return (
         <div className='worker'>
-            <div className='header'>
-                <img src='https://github.com/JeisielRamos.png' alt='Jeisiel'/>
+            <div className='header' style={{backgroundColor: headerColor}}>
+                <img src={image} alt={name} />
             </div>
             <div className='footer'>
-                <h4>Jeisiel</h4>
-                <h5>Dev</h5>
+                <h4>{name}</h4>
+                <h5>{office}</h5>
             </div>
         </div>
     )

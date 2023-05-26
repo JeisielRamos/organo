@@ -12,6 +12,7 @@ export const DropDownList = (props) => {
                 {props.label}
             </label>
             <select value={props.value} onChange={whenSelecting}  required={props.required}>
+                <option key=""></option>
                 {
                     props.itens.map(item => <option key={item}> {item} </option>)
                 }

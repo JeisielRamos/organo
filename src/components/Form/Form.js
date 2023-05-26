@@ -8,13 +8,15 @@ export const Form = (props) => {
     const [name, setName] = useState('')
     const [office, setOffice] = useState('')
     const [image, setImage] = useState('')
-    const [matter, setMatter] = useState('')
+    const [team, setTeam] = useState('')
 
-    const whenSaving = (event) => {
-        
+    const whenSaving = (event) => {        
         event.preventDefault();
-        props.registeredWorker([name, office, image, matter])
-        console.log('saving... ');
+        props.registeredWorker({name, office, image, team})
+        setName('')
+        setOffice('')
+        setImage('')
+        setTeam('')
     }
     return (
         <section className="form">
@@ -41,11 +43,11 @@ export const Form = (props) => {
                     Changed={valor => setImage(valor)}
                 />
                 <DropDownList 
-                    label="Materia" 
+                    label="Time" 
                     itens={props.teams} 
                     required={true}
-                    value={matter}
-                    Changed={valor => setMatter(valor)}
+                    value={team}
+                    Changed={valor => setTeam(valor)}
                 />
                 <Button>
                     Criar card
