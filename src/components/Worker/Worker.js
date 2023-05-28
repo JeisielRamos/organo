@@ -1,8 +1,10 @@
+import { AiOutlineCloseCircle } from 'react-icons/ai'
 import './Worker.css'
 
-export const Worker = ({name, office, image, headerColor}) => {
+export const Worker = ({name, office, image, headerColor, whenDeleted}) => {
     return (
         <div className='worker'>
+            <AiOutlineCloseCircle size={25} className='delete' onClick={whenDeleted} />
             <div className='header' style={{backgroundColor: headerColor}}>
                 <img src={image} alt={name} />
             </div>

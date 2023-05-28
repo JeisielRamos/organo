@@ -16,3 +16,8 @@
     margin-top: 32px;
     flex-wrap: wrap;
 }
+
+.team .input-color {
+    position: relative;
+    float: right;
+}

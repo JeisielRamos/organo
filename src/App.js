@@ -5,42 +5,55 @@ import Team from './components/Team';
 import Footer from './components/Footer';
 
 function App() {
-  const teams = [
+
+  const [teams, setTeams] = useState([
     {
       name: 'Devops',
-      primaryColor: '#57C278',
-      secondaryColor: '#D9F7E9'
+      color: '#57C278',
     },
     {
       name: 'BackEnd',
-      primaryColor: '#82CFFA',
-      secondaryColor: '#E9F8FF'
+      color: '#82CFFA'
     },
     {
       name: 'FrontEnd',
-      primaryColor: '#A6F157',
-      secondaryColor: '#F0F8E2'
+      color: '#A6F157',
     }
-  ]
+  ])
 
   const [workers, setWorkers] = useState([])
 
   const SetNewWorker = (worker) => {
-    setWorkers([...workers, worker])
+    setWorkers([...workers, worker]);
   }
 
+  const updatedTeamsColor = (color, name) => {
+    setTeams(teams.map((team) => {
+      if (team.name === name) {
+        team.color = color
+      }
+      return team
+    }))
+  }
+
+  function deletedWorker(){
+    console.log('deleted');
+  }
   return (
     <div className="App">
       <Banner />
       <Form registeredWorker = { worker => SetNewWorker(worker)} teams={teams.map(time => time.name)}/>
      
-      {teams.map( team => <Team 
-                              key={team.name} 
-                              name={team.name} 
-                              primaryColor={team.primaryColor}
-                              secondaryColor={team.secondaryColor}
-                              workers={workers.filter(worker => worker.team === team.name)}
-                              />)}
+      {teams.map( team => 
+        <Team 
+          key={team.name} 
+          name={team.name}
+          updatedTeamsColor={updatedTeamsColor}
+          color={team.color}
+          workers={workers.filter(worker => worker.team === team.name)}
+          whenDeleted={deletedWorker}
+        />)
+      }
       <Footer />
      </div>
   );
