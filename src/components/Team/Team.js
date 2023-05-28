@@ -10,14 +10,15 @@ export const Team = (props) => {
                 value={props.color} 
                 type='color' 
                 className='input-color' 
-                onChange={event => props.updatedTeamsColor(event.target.value, props.name)} />
+                onChange={event => props.updatedTeamsColor(event.target.value, props.id)} />
 
             <h3 style={{borderColor: props.color}}>{props.name}</h3>
 
             <div className='workers'>
                 {props.workers.map( worker => {
                     return <Worker 
-                            key={worker.name} 
+                            key={worker.name+""+worker.id} 
+                            id={worker.id} 
                             name={worker.name} 
                             office={worker.office} 
                             image={worker.image} 

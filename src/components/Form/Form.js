@@ -3,16 +3,19 @@ import { useState } from "react"
 import Button from "../Button"
 import DropDownList from "../DropDownList"
 import InputText from "../InputText"
+import { v4 as uuidv4 } from 'uuid'
 import './Form.css'
+
 export const Form = (props) => {
     const [name, setName] = useState('')
     const [office, setOffice] = useState('')
     const [image, setImage] = useState('')
     const [team, setTeam] = useState('')
 
-    const whenSaving = (event) => {        
+    const whenSaving = (event) => {
+        const id = uuidv4()
         event.preventDefault();
-        props.registeredWorker({name, office, image, team})
+        props.registeredWorker({id, name, office, image, team})
         setName('')
         setOffice('')
         setImage('')

@@ -3,19 +3,23 @@ import Banner from './components/Banner';
 import Form from './components/Form';
 import Team from './components/Team';
 import Footer from './components/Footer';
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
 
   const [teams, setTeams] = useState([
     {
+      id: uuidv4(),
       name: 'Devops',
       color: '#57C278',
     },
     {
+      id: uuidv4(),
       name: 'BackEnd',
       color: '#82CFFA'
     },
     {
+      id: uuidv4(),
       name: 'FrontEnd',
       color: '#A6F157',
     }
@@ -27,17 +31,17 @@ function App() {
     setWorkers([...workers, worker]);
   }
 
-  const updatedTeamsColor = (color, name) => {
+  const updatedTeamsColor = (color, id) => {
     setTeams(teams.map((team) => {
-      if (team.name === name) {
+      if (team.id === id) {
         team.color = color
       }
       return team
     }))
   }
 
-  function deletedWorker(){
-    console.log('deleted');
+  const deletedWorker = (id) => {
+    setWorkers(workers.filter(worker => worker.id!== id));
   }
   return (
     <div className="App">
@@ -46,7 +50,8 @@ function App() {
      
       {teams.map( team => 
         <Team 
-          key={team.name} 
+          key={team.name+""+team.id} 
+          id={team.id}
           name={team.name}
           updatedTeamsColor={updatedTeamsColor}
           color={team.color}
