@@ -2,7 +2,7 @@
 import { useState } from "react"
 import Button from "../Button"
 import DropDownList from "../DropDownList"
-import InputText from "../InputText"
+import Input from "../Input"
 import { v4 as uuidv4 } from 'uuid'
 import './Form.css'
 
@@ -15,9 +15,10 @@ export const Form = (props) => {
     const [colorTeam, setColorTeam] = useState('')
 
     const whenSaving = (event) => {
+        const favorite = false
         const id = uuidv4()
         event.preventDefault();
-        props.registeredWorker({id, name, office, image, team})
+        props.registeredWorker({id, name, office, image, team, favorite})
         setName('')
         setOffice('')
         setImage('')
@@ -27,21 +28,24 @@ export const Form = (props) => {
         <section className="form">
             <form onSubmit={whenSaving}>
                 <h2>Preencha os dados para criar um novo colaborador</h2>
-                <InputText 
+                <Input
+                    type = "text"
                     label="Nome" 
                     placeholder="Digite o seu nome" 
                     required={true} 
                     value={name}
                     Changed={valor => setName(valor)}
                 />
-                <InputText 
+                <Input
+                    type = "text"
                     label="Cargo" 
                     placeholder="Digite o seu cargo" 
                     required={true} 
                     value={office}
                     Changed={valor => setOffice(valor)}
                 />
-                <InputText 
+                <Input
+                    type = "text"
                     label="Imagem" 
                     placeholder="Informe o endereço da imagem"
                     value={image}
@@ -63,14 +67,15 @@ export const Form = (props) => {
                 props.registeredTeams(nameTeam,colorTeam);
                 }}>
                 <h2>Preencha os dados para criar um novo time</h2>
-                <InputText 
+                <Input 
                     label="Nome" 
                     placeholder="Digite o nome do time" 
                     required 
                     value={nameTeam}
                     Changed={valor => setNameTeam(valor)}
                 />
-                <InputText 
+                <Input
+                    type="color"
                     label="cor" 
                     placeholder="Digite a cor do time" 
                     required 

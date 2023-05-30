@@ -23,7 +23,9 @@ export const Team = (props) => {
                             office={worker.office} 
                             image={worker.image} 
                             headerColor={ props.color}
-                            whenDeleted={props.whenDeleted}  />
+                            whenDeleted={props.whenDeleted} 
+                            whenFavorite={props.whenFavorite}
+                            isFavorite={worker.favorite}  />
                 })}
             </div>
         </section>

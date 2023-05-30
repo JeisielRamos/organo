@@ -35,6 +35,15 @@ function App() {
     setTeams([...teams, {name: nameTeam, color: colorTeam, id: uuidv4()}]);
   }
 
+  const favoriteWorker = (id) => {
+    setWorkers(workers.map((worker) => {
+      if (worker.id === id) {
+        worker.favorite = !worker.favorite
+      }
+      return worker
+    }))
+  }
+
   const updatedTeamsColor = (color, id) => {
     setTeams(teams.map((team) => {
       if (team.id === id) {
@@ -65,6 +74,7 @@ function App() {
           color={team.color}
           workers={workers.filter(worker => worker.team === team.name)}
           whenDeleted={deletedWorker}
+          whenFavorite={favoriteWorker}
         />)
       }
       <Footer />
