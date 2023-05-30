@@ -31,6 +31,10 @@ function App() {
     setWorkers([...workers, worker]);
   }
 
+  const createNewTeam = (nameTeam, colorTeam) => {
+    setTeams([...teams, {name: nameTeam, color: colorTeam, id: uuidv4()}]);
+  }
+
   const updatedTeamsColor = (color, id) => {
     setTeams(teams.map((team) => {
       if (team.id === id) {
@@ -46,7 +50,11 @@ function App() {
   return (
     <div className="App">
       <Banner />
-      <Form registeredWorker = { worker => SetNewWorker(worker)} teams={teams.map(time => time.name)}/>
+      <Form 
+        registeredTeams={createNewTeam}
+        registeredWorker = { worker => SetNewWorker(worker)} 
+        teams={teams.map(time => time.name)}
+      />
      
       {teams.map( team => 
         <Team 

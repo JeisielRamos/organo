@@ -11,6 +11,8 @@ export const Form = (props) => {
     const [office, setOffice] = useState('')
     const [image, setImage] = useState('')
     const [team, setTeam] = useState('')
+    const [nameTeam, setNameTeam] = useState('')
+    const [colorTeam, setColorTeam] = useState('')
 
     const whenSaving = (event) => {
         const id = uuidv4()
@@ -24,7 +26,7 @@ export const Form = (props) => {
     return (
         <section className="form">
             <form onSubmit={whenSaving}>
-                <h2>Preencha os dados para criar o card do colaborador</h2>
+                <h2>Preencha os dados para criar um novo colaborador</h2>
                 <InputText 
                     label="Nome" 
                     placeholder="Digite o seu nome" 
@@ -53,7 +55,30 @@ export const Form = (props) => {
                     Changed={valor => setTeam(valor)}
                 />
                 <Button>
-                    Criar card
+                    Criar colaborador
+                </Button>
+            </form>
+            <form onSubmit={(event) => { 
+                event.preventDefault();
+                props.registeredTeams(nameTeam,colorTeam);
+                }}>
+                <h2>Preencha os dados para criar um novo time</h2>
+                <InputText 
+                    label="Nome" 
+                    placeholder="Digite o nome do time" 
+                    required 
+                    value={nameTeam}
+                    Changed={valor => setNameTeam(valor)}
+                />
+                <InputText 
+                    label="cor" 
+                    placeholder="Digite a cor do time" 
+                    required 
+                    value={colorTeam}
+                    Changed={valor => setColorTeam(valor)}
+                />
+                <Button>
+                    Criar time
                 </Button>
             </form>
         </section>
